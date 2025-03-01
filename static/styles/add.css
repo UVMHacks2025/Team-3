@@ -12,6 +12,12 @@
 .CheckBoxArray {
 }
 
+.item_quantity{
+    grid-row: 1;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
 .item_name{
    grid-column-start: 1;
     grid-column-end: 2;
@@ -31,11 +37,16 @@
 }
 
 .item_expiration{
-    grid-row: 1;
+    grid-row: 2;
     grid-column-start: 3;
     grid-column-end: 4;
 }
 
+.item_category{
+    grid-row: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
 .item_tags{
     grid-row: 2;
     grid-column-start: 2;
@@ -47,7 +58,10 @@
 }
 
 .item_submit{
-    grid-row: 4;
+    grid-row: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    width: 80%;
 }
 
 textarea {

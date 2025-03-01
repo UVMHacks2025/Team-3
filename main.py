@@ -132,7 +132,6 @@ def add():
             for i in range(0, len(tags)):
                 tags[i] = tags[i].strip()
 
-            date = datetime.date.today()
             requested = request.form.get('requested')
             expiration = request.form.get('expiration_date')
 
