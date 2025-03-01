@@ -15,7 +15,7 @@ df.to_sql('Inventory', conn, if_exists='replace', index = False)
 
 class databse:
     # Read in example date
-    def setup(cls):
+    # def setup(cls):
 
 
 # Initialize sqlite
@@ -29,7 +29,7 @@ class databse:
     def addItem(cn, n, br, amt, cat, don, veget, kosh, vega, hall):
         cn.execute("""INSERT INTO RALLYCATS (name, brand, quantity, category, 
                    donor, vegetarian, kosher, vegan, hallal) VALUES ({n}, {br},
-                   {}""")
+                   {amt}, {cat}, {don}, {veget}, {kosh}, {vega}, {hall})""")
 
 # Remove item
 
