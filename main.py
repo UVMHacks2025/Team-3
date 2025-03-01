@@ -39,8 +39,8 @@ def login():
             if username == fields[0] and password == fields[1]:
                 logged_in = True
                 return redirect(url_for('dashboard'))
-            else:
-                return render_template(url_for('login'), user = username)
+            return render_template(url_for('login'), user = username)
+        return render_template('login.html', user="")
     else:
         return redirect(url_for('dashboard'))
 
@@ -74,6 +74,34 @@ def dashboard():
                                page_title = "Inventory",
                                rows = rows,
                                error = error)
+    else:
+        return render_template('login.html')
+"""
+    if request.method == "POST":
+        quantity = request.form.get("new_quantity") #data verification
+        if quantity.isdigit():
+            #Update db with new quantity for inventory
+            pass
+        else:
+            #send message saying the db has not been updated
+            error = "Invalid Input. Database has not been update."
+
+    # #make rows be all the rows of the db
+    # rows = [["Mac and Cheese", "Kraft", 3, "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
+    
+    if request.method == "POST":   
+        keyvalue = request.form.name 
+        print(keyvalue)
+        
+        render_template("inventory.html",keyvalue)
+
+
+    database = db.Database()
+    database.load_db()
+    string = database.cur.execute(f'SELECT * FROM Inventory').fetchall()
+    print(string)
+    return render_template("inventory.html")  
+"""
 
 """
 ADD ITEM
