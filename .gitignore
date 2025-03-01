@@ -7,3 +7,5 @@
 out
 gen
 .venv
+__pycache__/main.cpython-312.pyc
+data/__pycache__/UserDB.cpython-312.pyc

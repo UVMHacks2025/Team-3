@@ -1,7 +1,7 @@
+
 import pandas as pd
 import sqlite3
 from datetime import datetime
-import os
 
 '''
 Database Management file
@@ -13,7 +13,7 @@ class Database:
         self.cn = sqlite3.connect('RallyCats.db')
         self.cur = self.cn.cursor()
         self.inventory_df = pd.DataFrame(pd.read_csv("dummy_data.csv"))
-        self.users_df = pd.DataFrame(pd.read_csv("data/user_data.csv"))
+        self.users_df = pd.DataFrame(pd.read_csv("user_data.csv"))
 
     def load_db(self):
         if self.cur.fetchall():
@@ -22,6 +22,11 @@ class Database:
             self.inventory_df.to_sql('Inventory', self.cn, if_exists='replace', index=False)
             self.users_df.to_sql('Users', self.cn, if_exists='replace', index=False)
         #print(self.inventory_df)
+
+    def print_db(self):
+        rows = self.cn.execute("SELECT * FROM Inventory").fetchall()
+        for row in rows:
+            print(row)
 
     def close_db(self):
         self.cn.close()
@@ -34,10 +39,14 @@ class Database:
                        donor, vegetarian, kosher, vegan, hallal, expiration) 
                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
         try:
-            target_date = datetime.strptime(exp, "%Y-%m-%d")  
+            year = exp[0:4]
+            month = exp[5:7]
+            day = exp[8:11]
+            target_date = datetime(int(year), int(month), int(day))
             current_date = datetime.now()
-            expiration = exp
+            expiration = (target_date - current_date).days + 1
             print(expiration)
+            expiration = (target_date - current_date).days + 1
         except ValueError:
             print('Expiration date conversion failed')
         self.cur.execute(query, (n, br, amt, cat, don, veget, kosh, vega, hall, expiration))
@@ -93,14 +102,16 @@ def Testing():
     # Change quantity of test item
     db.changeQuantity("Test Item", 25)
 
-    #print(db.lowQuantity())
+    #print(db.lowQuanity())
 
     # Remove test item
-    db.removeItem("Test Item")
+    db.removeItem("Apples")
 
     # Check for expirations less than 30
     print(db.checkExpirations())
 
+    # Print all rows
+    #db.print_db()
 
     print("\n--- Tests Completed Successfully ---")
 
