@@ -45,7 +45,16 @@ class Database:
     # Check for expirations
 
     # Check for low quantity
-    ### Ask representative for quantity threshhold
+    #returns a list of [name, quantity]
+    def lowQuanity(self):
+        self.cur.execute("""SELECT * FROM Inventory WHERE quantity <= 5""")
+        low = self.cur.fetchall()
+        output = []
+        for i in low:
+            output.append([i[0], i[2]])
+        return output
+
+    ### Ask representative for quantity threshhold - its 5
 
 
 
@@ -59,10 +68,12 @@ def Testing():
     # Change quantity of test item
     db.changeQuantity("Test Item", 25)
 
-    # Remove test item
-    db.removeItem("Test Item")
+    print(db.lowQuanity())
 
-    #print("\n--- Tests Completed Successfully ---")
+    # Remove test item
+    #db.removeItem("Test Item")
+
+    print("\n--- Tests Completed Successfully ---")
 
 
 if __name__ == '__main__':
