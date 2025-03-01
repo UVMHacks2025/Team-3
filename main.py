@@ -53,7 +53,6 @@ def dashboard():
         error = 0
         #make rows be all the rows of the db
         database = db.Database()
-        database.load_db()
         if request.method == "POST":
             item_name = request.form.get('Button') #get item name from button value
 
@@ -79,32 +78,6 @@ def dashboard():
                                 error = error)
     else:
         return redirect(url_for('login'))
-"""
-    if request.method == "POST":
-        quantity = request.form.get("new_quantity") #data verification
-        if quantity.isdigit():
-            #Update db with new quantity for inventory
-            pass
-        else:
-            #send message saying the db has not been updated
-            error = "Invalid Input. Database has not been update."
-
-    # #make rows be all the rows of the db
-    # rows = [["Mac and Cheese", "Kraft", 3, "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
-    
-    if request.method == "POST":   
-        keyvalue = request.form.name 
-        print(keyvalue)
-        
-        render_template("inventory.html",keyvalue)
-
-
-    database = db.Database()
-    database.load_db()
-    string = database.cur.execute(f'SELECT * FROM Inventory').fetchall()
-    print(string)
-    return render_template("inventory.html")  
-"""
 
 """
 ADD ITEM
@@ -113,7 +86,6 @@ ADD ITEM
 def add():
     if logged_in:
         database = db.Database()
-        database.load_db()
 
         if request.method == "POST":
             name = request.form.get("name")
