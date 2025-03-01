@@ -11,11 +11,14 @@ def setup(cls):
 
 # Initialize sqlite
 
-
+    database = sqlite3.connect()
+    curs = database.cursor()
 
 
 
 # Add item
+
+    
 
 # Remove item
 
