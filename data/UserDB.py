@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3
 '''
-Databse Management file
+Database Management file
 '''
 
 class Database:
