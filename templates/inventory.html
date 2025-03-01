@@ -4,9 +4,9 @@
 <!--would we want to add a way to search the table?-->
 <div id="inventory_table">
     {% if error %}
-    <p color = "red">{{error}}</p>
+    <p class= "error">{{error}}</p>
     {% endif %}
-    <table width="100%" border="1px solid">
+    <table>
         <trhead>
             <tr>
                 <th></th>
@@ -22,11 +22,11 @@
         {% for row in rows %} <!--depends on how the database is setup-->
         <!-- Possibly add css to make row be red if low in stock and green if high in stock-->
         {% if row[2] <= 5 %}
-            <th color="red">
+            <th class="low">
         {% elif row[2]  <= 10 %}
-            <th background-color="yellow">
+            <th class="medium">
         {% else %}
-            <th background-color="green">
+            <th class="high">
         {% endif %}
                 <td>{{row[0]}}</td> <!--Item Name-->
                 <td> <!--Quantity-->
