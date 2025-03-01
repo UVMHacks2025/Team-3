@@ -33,7 +33,7 @@
                 <td> <!--Quantity-->
                     <form method="POST" action="{{ url_for('dashboard') }}"id="button">
                         <label>{{row[2]}}&nbsp;</label><input type="text" name="new_quantity">
-                        <button type="submit" value="Update">Update</button> <!--How to return item name of row[0] for sql call -->
+                        <button type="submit" value="{{row[0]}}" name="Button">Update</button> <!--How to return item name of row[0] for sql call -->
                     </form>
                 </td> 
                 <td>{{row[3]}}</td> <!--Category-->
@@ -41,7 +41,7 @@
                 <td>{{row[4]}}</td> <!--Donor-->
                 <td>
                     <form method="POST" action="{{ url_for('dashboard') }}" id="button">
-                    <button type="delete" value="Delete">Delete</button>
+                    <button type="submit" value="{{row[0]}}" name="Button">Delete</button>
                     </form>
                 </td>
             </tr>
