@@ -31,16 +31,15 @@ class Database:
 
 # Remove item
     def removeItem(self, n):
-        self.cur.execute("""DELETE FROM Inventory WHERE name = {n}""")
+        query = ("""DELETE FROM Inventory WHERE name = ?""")
+        self.cur.execute(query, (n,))
         self.cn.commit()
 
-# Change quantity
-    def changeQuantity(self, n, amt):
-        self.cur.execute("""UPDATE Inventory SET quantity = {amt} WHERE name = {n}""")
-        self.cn.commit()
     # Change quantity
     def changeQuantity(self, n, amt):
-        self.cur.execute("""UPDATE Inventory SET quantity = {amt} WHERE name = {n}""")
+        query = """UPDATE Inventory SET quantity = ? WHERE name = ?"""
+        self.cur.execute(query, (amt, n))
+        self.cn.commit()
         self.cn.commit()
 
     # Check for expirations
@@ -54,27 +53,17 @@ def Testing():
     db = Database()
     db.load_db()
 
-    db.cur.execute("SELECT * FROM Inventory")
-    rows = db.cur.fetchall()
-    for row in rows:
-        print(row)
-    print("\n--- Running Tests ---")
-
     # Add a test item
     db.addItem("Test Item", "Test Brand", 10, "non-perishable", 1, 1, 1, 1, 1)
-    db.cur.execute("SELECT * FROM Inventory")
-    rows = db.cur.fetchall()
-    for row in rows:
-        print(row)
-"""
+
     # Change quantity of test item
     db.changeQuantity("Test Item", 25)
 
     # Remove test item
     db.removeItem("Test Item")
 
-    print("\n--- Tests Completed Successfully ---")
-"""
+    #print("\n--- Tests Completed Successfully ---")
+
 
 if __name__ == '__main__':
     Testing()
