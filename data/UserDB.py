@@ -13,7 +13,7 @@ class Database:
         self.cn = sqlite3.connect('RallyCats.db')
         self.cur = self.cn.cursor()
         self.inventory_df = pd.DataFrame(pd.read_csv("dummy_data.csv"))
-        self.users_df = pd.DataFrame(pd.read_csv("user_data.csv"))
+        self.users_df = pd.DataFrame(pd.read_csv("data/user_data.csv"))
 
     def load_db(self):
         if self.cur.fetchall():

@@ -39,8 +39,8 @@ def login():
             if username == fields[0] and password == fields[1]:
                 logged_in = True
                 return redirect(url_for('dashboard'))
-            else:
-                return render_template(url_for('login'), user = username)
+            return render_template(url_for('login'), user = username)
+        return render_template('login.html', user="")
     else:
         return redirect(url_for('dashboard'))
 
@@ -77,7 +77,7 @@ def dashboard():
                                rows = rows,
                                error = error)
     else:
-        return redirect(url_for('login'))
+        return render_template('login.html')
 """
     if request.method == "POST":
         quantity = request.form.get("new_quantity") #data verification
