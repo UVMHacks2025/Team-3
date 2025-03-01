@@ -33,7 +33,7 @@ class Database:
                        donor, vegetarian, kosher, vegan, hallal, expiration) 
                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
         try:
-            target_date = datetime.strptime(exp, "%Y-%m-%d")  
+            target_date = datetime.strptime(exp, "%Y-%m-%d")
             current_date = datetime.now()
             expiration = exp
             print(expiration)
@@ -95,11 +95,15 @@ def Testing():
     print(db.lowQuanity())
 
     # Remove test item
-    db.removeItem("Test Item")
+    db.removeItem("Apples")
 
     # Check for expirations less than 30
     print(db.checkExpirations())
 
+    # Print all rows
+    rows = db.cn.execute("SELECT * FROM Inventory").fetchall()
+    for row in rows:
+        print(row)
 
     print("\n--- Tests Completed Successfully ---")
 
