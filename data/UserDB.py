@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3
 '''
-Databse Management file
+Database Management file
 '''
 
 class Database:
@@ -15,15 +15,16 @@ class Database:
         cn = sqlite3.connect('RallyCats.db')
         self.inventory_df.to_sql('Inventory', cn, if_exists='replace', index=False)
         self.users_df.to_sql('Users', cn, if_exists='replace', index=False)
-        print(self.inventory_df)
+        #print(self.inventory_df)
 
 
 
     # Add item
+
     def addItem(self, n, br, amt, cat, don, veget, kosh, vega, hall):
-        self.cn.execute("""INSERT INTO RALLYCATS (name, brand, quantity, category, 
-                   donor, vegetarian, kosher, vegan, hallal) VALUES ({n}, {br},
-                   {amt}, {cat}, {don}, {veget}, {kosh}, {vega}, {hall})""")
+        self.cn.execute(f"""INSERT INTO RallyCats.Inventory (name, brand, quantity, category, 
+                   donor, vegetarian, kosher, vegan, hallal) VALUES ({"test"}, {"test"},
+                   {5}, {"test cat"}, {"test"}, {0}, {0}, {0}, {0})""")
         self.cn.commit()
 
 # Remove item
@@ -51,8 +52,9 @@ def Testing():
     db = Database()
     db.load_db()
 
+    print(db.cn.execute("SELECT * FROM Inventory"))
     print("\n--- Running Tests ---")
-
+"""
     # Add a test item
     db.addItem("Test Item", "Test Brand", 10, "non-perishable", 1, 1, 1, 1, 1)
 
@@ -63,7 +65,7 @@ def Testing():
     db.removeItem("Test Item")
 
     print("\n--- Tests Completed Successfully ---")
-
+"""
 
 if __name__ == '__main__':
     Testing()

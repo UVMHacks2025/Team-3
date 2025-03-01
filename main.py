@@ -19,12 +19,12 @@ LOGIN
 """
 @app.route("/login", methods = ['GET','POST'])
 def login():
+    #if login from user
+
     if request.method == 'POST':
-        #posted to the server 
         username = request.form.get('username')
-        print(username)
         password = request.form.get('password')
-        print(password) 
+        print(password)
 
 
         render_template("home.html", user = username)
@@ -42,7 +42,7 @@ def register():
 
         #user db login info 
 
-    return render_template("register.html")
+    return render_template("register.html",username,password)
 
 
 
@@ -62,7 +62,7 @@ def dashboard():
             error = "Invalid Input. Database has not been update."
 
     #make rows be all the rows of the db
-    rows = [["Mac and Cheese", "Kraft", "3", "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
+    rows = [["Mac and Cheese", "Kraft", 3, "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
     return render_template("inventory.html", 
                            page_title = "Inventory",
                            rows = rows,
@@ -75,7 +75,7 @@ ADD ITEM
 def add():
     if request.method == "POST":
         name = request.form.get("name")
-        brand = request.form.get("brand")
+        donor = request.form.get("donor")
         dietary_restrictions = [request.form.get('kosher'), request.form.get('halal'),
                                 request.form.get('vegetarian'), request.form.get('vegan')]
         allergens = [request.form.get('dairy'), request.form.get('eggs'), request.form.get('fish'),
@@ -87,11 +87,10 @@ def add():
             tags[i] = tags[i].strip()
 
         date = request.form.get('date')
+        requested = request.form.get('requested')
 
         # TODO: Put into database
 
 
     return render_template("add.html")
 
-if __name__ == "__main__":
-    app.run(debug=True)
