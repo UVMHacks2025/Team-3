@@ -1,4 +1,3 @@
-from apsw.unicode import strip
 from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__,static_folder='static')
