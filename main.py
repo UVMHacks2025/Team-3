@@ -1,9 +1,7 @@
 import datetime
 
 from flask import Flask, render_template, request, url_for, redirect
-
 import data.UserDB as db
-
 app = Flask(__name__,static_folder='static')
 
 
@@ -53,15 +51,40 @@ INVENTORY DASHBOARD
 """
 @app.route("/dashboard", methods = ['GET','POST'])
 def dashboard():
-    # error = 0
-    # if request.method == "POST":
-    #     quantity = request.form.get("new_quantity") #data verification
-    #     if quantity.isdigit():
-    #         #Update db with new quantity for inventory
-    #         pass
-    #     else:
-    #         #send message saying the db has not been updated
-    #         error = "Invalid Input. Database has not been update."
+    error = 0
+    #make rows be all the rows of the db
+    database = db.Database()
+    database.load_db()
+    if request.method == "POST":
+        if request.form.get('button') == "Delete":
+            item_name = request.form.get("button")
+            database.removeItem(item_name)
+        elif request.form.get('button') == "Update":
+            quantity = request.form.get("new_quantity") #data verification
+            item_name = request.form.get("button")
+            #TESTING
+            print(item_name)
+            if quantity.isdigit():
+                #Update db with new quantity for inventory
+                database.changeQuantity(item_name, quantity)
+            else:
+                #send message saying the db has not been updated
+                error = "Invalid Input. Database has not been update."
+
+    rows = database.cur.execute("SELECT * FROM Inventory").fetchall()
+    return render_template("inventory.html", 
+                           page_title = "Inventory",
+                           rows = rows,
+                           error = error)
+"""
+    if request.method == "POST":
+        quantity = request.form.get("new_quantity") #data verification
+        if quantity.isdigit():
+            #Update db with new quantity for inventory
+            pass
+        else:
+            #send message saying the db has not been updated
+            error = "Invalid Input. Database has not been update."
 
     # #make rows be all the rows of the db
     # rows = [["Mac and Cheese", "Kraft", 3, "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
@@ -78,6 +101,7 @@ def dashboard():
     string = database.cur.execute(f'SELECT * FROM Inventory').fetchall()
     print(string)
     return render_template("inventory.html")
+"""
 
 """
 ADD ITEM
