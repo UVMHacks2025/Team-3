@@ -1,4 +1,3 @@
-from apsw.unicode import strip
 from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__,static_folder='static')
@@ -25,7 +24,7 @@ def login():
         username = request.form.get('username')
         print(username)
         password = request.form.get('password')
-        print(password)
+        print(password) 
 
 
         render_template("home.html", user = username)
@@ -52,10 +51,7 @@ INVENTORY DASHBOARD
 """
 @app.route("/dashboard", methods = ['GET','POST'])
 def dashboard():
-<<<<<<< HEAD
-=======
     error = 0
->>>>>>> 5d4f605a1e157bf77ee5afe698de127d01db5524
     if request.method == "POST":
         quantity = request.form.get("new_quantity") #data verification
         if quantity.isDigit():
