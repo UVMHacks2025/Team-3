@@ -17,6 +17,7 @@
                 <th>Category</th>
                 <th>Days Until Expiration</th>
                 <th>Donor</th>
+                <th>Requested?</th>
         </trhead>
         <tbody>
         {% for row in rows %} <!--depends on how the database is setup "Mac n' Cheese","Kraft",20,"non-perishable","Hannafords",1,0,0,0,12
@@ -39,6 +40,11 @@
                 <td>{{row[3]}}</td> <!--Category-->
                 <td>{{row[9]}}</td> <!--Expr Date-->
                 <td>{{row[4]}}</td> <!--Donor-->
+                {% if row[10] == 0 %}
+                    <td>No</td> <!--Requested-->
+                {% else %}
+                    <td>Yes</td>
+                {% endif %}
                 <td>
                     <form method="POST" action="{{ url_for('dashboard') }}" id="button">
                     <button type="submit" value="{{row[0]}}" name="Button">Delete</button>
