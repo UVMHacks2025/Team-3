@@ -3,10 +3,15 @@ import sqlite3
 '''
 Databse Management file
 '''
-class databse:
+class database:
+
+
     # Read in example date
     def setup(cls):
 
+    #get connection 
+    def connect():
+        return sqlite3.connect('./database.db')
 
     # Initialize sqlite
 
