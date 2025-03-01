@@ -63,7 +63,13 @@ def add():
         dietary_restrictions = [request.form.get('kosher'), request.form.get('halal'),
                                 request.form.get('vegetarian'), request.form.get('vegan')]
         allergens = [request.form.get('dairy'), request.form.get('eggs'), request.form.get('fish'),
-                     request.form.get('shellfish'), request.form.get('tree_nuts')]
+                     request.form.get('shellfish'), request.form.get('tree_nuts'), request.form.get('peanuts'),
+                     request.form.get('wheat'), request.form.get('soybeans'), request.form.get('sesame')]
+        tag_list = request.form.get('tags')
+        # TODO: Add splitting the tags by commas
+        date = request.form.get('date')
+
+        # TODO: Put into database
 
 
     return render_template("add.html")
