@@ -61,6 +61,7 @@ def dashboard():
     #         #send message saying the db has not been updated
     #         error = "Invalid Input. Database has not been update."
 
+<<<<<<< HEAD
     # #make rows be all the rows of the db
     # rows = [["Mac and Cheese", "Kraft", 3, "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
     
@@ -71,6 +72,14 @@ def dashboard():
     return render_template("home.html",
                             string =  string ,
                             )
+=======
+    #make rows be all the rows of the db
+    rows = [["Mac and Cheese", "Kraft", 9, "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
+    return render_template("inventory.html", 
+                           page_title = "Inventory",
+                           rows = rows,
+                           error = error)
+>>>>>>> 4b600647c8a5d5b102fb1b10ecc32f42c150da75
 
 """
 ADD ITEM
