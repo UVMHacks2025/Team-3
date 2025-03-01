@@ -55,11 +55,10 @@ def dashboard():
     #make rows be all the rows of the db
     database = db.Database()
     database.load_db()
-    rows = database.cur.execute("SELECT * FROM Inventory").fetchall()
     if request.method == "POST":
         if request.form.get('button') == "Delete":
             item_name = request.form.get("button")
-            db.removeItem(item_name)
+            database.removeItem(item_name)
         elif request.form.get('button') == "Update":
             quantity = request.form.get("new_quantity") #data verification
             item_name = request.form.get("button")
@@ -67,17 +66,17 @@ def dashboard():
             print(item_name)
             if quantity.isdigit():
                 #Update db with new quantity for inventory
-                db.changeQuantity(item_name, quantity)
+                database.changeQuantity(item_name, quantity)
             else:
                 #send message saying the db has not been updated
                 error = "Invalid Input. Database has not been update."
 
-    
-    #rows = [["Mac and Cheese", "Kraft", 9, "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
+    rows = database.cur.execute("SELECT * FROM Inventory").fetchall()
     return render_template("inventory.html", 
                            page_title = "Inventory",
                            rows = rows,
                            error = error)
+"""
     if request.method == "POST":
         quantity = request.form.get("new_quantity") #data verification
         if quantity.isdigit():
@@ -102,6 +101,7 @@ def dashboard():
     string = database.cur.execute(f'SELECT * FROM Inventory').fetchall()
     print(string)
     return render_template("inventory.html")
+"""
 
 """
 ADD ITEM
