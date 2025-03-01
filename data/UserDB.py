@@ -7,7 +7,7 @@ Databse Management file
 class Database:
     # Read in example date
     def __init__(self):
-        cn = sqlite3.connect('RallyCats.db')
+        self.cn = sqlite3.connect('RallyCats.db')
         self.inventory_df = pd.DataFrame(pd.read_csv("dummy_data.csv"))
         self.users_df = pd.DataFrame(pd.read_csv("user_data.csv"))
 
