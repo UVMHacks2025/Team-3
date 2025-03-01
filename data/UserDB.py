@@ -8,6 +8,7 @@ class Database:
     # Read in example date
     def __init__(self):
         self.cn = sqlite3.connect('RallyCats.db')
+        self.cur = self.cn.cursor()
         self.inventory_df = pd.DataFrame(pd.read_csv("dummy_data.csv"))
         self.users_df = pd.DataFrame(pd.read_csv("user_data.csv"))
 
@@ -22,9 +23,8 @@ class Database:
     # Add item
 
     def addItem(self, n, br, amt, cat, don, veget, kosh, vega, hall):
-        self.cn.execute(f"""INSERT INTO RallyCats.Inventory (name, brand, quantity, category, 
-                   donor, vegetarian, kosher, vegan, hallal) VALUES ({"test"}, {"test"},
-                   {5}, {"test cat"}, {"test"}, {0}, {0}, {0}, {0})""")
+        self.cur.execute("""INSERT INTO Inventory (name, brand, quantity, category, 
+                   donor, vegetarian, kosher, vegan, hallal) VALUES ("test", "test", 1, "test", "test", 0, 0, 0, 0)""")
         self.cn.commit()
 
 # Remove item
@@ -52,12 +52,19 @@ def Testing():
     db = Database()
     db.load_db()
 
-    print(db.cn.execute("SELECT * FROM Inventory"))
+    db.cur.execute("SELECT * FROM Inventory")
+    rows = db.cur.fetchall()
+    for row in rows:
+        print(row)
     print("\n--- Running Tests ---")
-"""
+
     # Add a test item
     db.addItem("Test Item", "Test Brand", 10, "non-perishable", 1, 1, 1, 1, 1)
-
+    db.cur.execute("SELECT * FROM Inventory")
+    rows = db.cur.fetchall()
+    for row in rows:
+        print(row)
+"""
     # Change quantity of test item
     db.changeQuantity("Test Item", 25)
 

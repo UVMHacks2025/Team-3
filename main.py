@@ -13,7 +13,6 @@ def home():
     return render_template("home.html")
 
 
-
 """
 LOGIN
 """
@@ -42,7 +41,7 @@ def register():
 
         #user db login info 
 
-    return render_template("register.html",username,password)
+    return render_template("register.html")
 
 
 
@@ -94,3 +93,5 @@ def add():
 
     return render_template("add.html")
 
+if __name__ == "__main__":
+    app.run(debug=True)
