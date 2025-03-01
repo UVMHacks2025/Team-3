@@ -77,32 +77,6 @@ def dashboard():
                                 error = error)
     else:
         return redirect(url_for('login'))
-"""
-    if request.method == "POST":
-        quantity = request.form.get("new_quantity") #data verification
-        if quantity.isdigit():
-            #Update db with new quantity for inventory
-            pass
-        else:
-            #send message saying the db has not been updated
-            error = "Invalid Input. Database has not been update."
-
-    # #make rows be all the rows of the db
-    # rows = [["Mac and Cheese", "Kraft", 3, "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
-    
-    if request.method == "POST":   
-        keyvalue = request.form.name 
-        print(keyvalue)
-        
-        render_template("inventory.html",keyvalue)
-
-
-    database = db.Database()
-    database.load_db()
-    string = database.cur.execute(f'SELECT * FROM Inventory').fetchall()
-    print(string)
-    return render_template("inventory.html")  
-"""
 
 """
 ADD ITEM
@@ -137,6 +111,7 @@ def add():
             expiration = request.form.get('expiration_date')
 
             database.addItem(name,None,amount,category,donor,vegetarian,kosher,vegan,halal,expiration)
+            print(database.cur.execute("SELECT * FROM Inventory").fetchall())
         return render_template("add.html")
     else:
         return redirect(url_for('login'))
