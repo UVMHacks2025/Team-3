@@ -49,13 +49,16 @@ class Database:
         query = """UPDATE Inventory SET quantity = ? WHERE name = ?"""
         self.cur.execute(query, (amt, n))
         self.cn.commit()
+
+
+    # Check for expirations
+    def checkExpirations(self, days):
+        query = """SELECT * FROM Inventory WHERE expiration < ?"""
+        self.cur.execute(query, (days,))
         self.cn.commit()
 
-    """
-    # Check for expirations
-    def checkExpirations(self):
-        query = SELECT expiration
-    """
+
+
     # Check for low quantity
     #returns a list of [name, quantity]
     def lowQuanity(self):
@@ -84,7 +87,10 @@ def Testing():
     print(db.lowQuanity())
 
     # Remove test item
-    #db.removeItem("Test Item")
+    db.removeItem("Test Item")
+
+    # Check for expirations less than 30
+    db.checkExpirations(30)
 
     print("\n--- Tests Completed Successfully ---")
 
