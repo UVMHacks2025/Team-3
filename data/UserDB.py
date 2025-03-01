@@ -1,5 +1,7 @@
 import pandas as pd
 import sqlite3
+from datetime import datetime
+
 '''
 Database Management file
 '''
@@ -22,11 +24,18 @@ class Database:
 
     # Add item
 
-    def addItem(self, n, br, amt, cat, don, veget, kosh, vega, hall):
+    def addItem(self, n, br, amt, cat, don, veget, kosh, vega, hall, exp):
         query = """INSERT INTO Inventory (name, brand, quantity, category, 
-                       donor, vegetarian, kosher, vegan, hallal) 
-                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"""
-        self.cur.execute(query, (n, br, amt, cat, don, veget, kosh, vega, hall))
+                       donor, vegetarian, kosher, vegan, hallal, expiration) 
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+        try:
+            target_date = exp
+            current_date = datetime.now()
+            expiration = (target_date - current_date).days + 1
+            print(expiration)
+        except ValueError:
+            print('Expiration date conversion failed')
+        self.cur.execute(query, (n, br, amt, cat, don, veget, kosh, vega, hall, expiration))
         self.cn.commit()
 
 # Remove item
@@ -42,8 +51,11 @@ class Database:
         self.cn.commit()
         self.cn.commit()
 
+    """
     # Check for expirations
-
+    def checkExpirations(self):
+        query = SELECT expiration
+    """
     # Check for low quantity
     #returns a list of [name, quantity]
     def lowQuanity(self):
@@ -63,7 +75,8 @@ def Testing():
     db.load_db()
 
     # Add a test item
-    db.addItem("Test Item", "Test Brand", 10, "non-perishable", 1, 1, 1, 1, 1)
+    db.addItem("Test Item", "Test Brand", 10, "non-perishable",
+               1, 1, 1, 1, 1, datetime(2025, 3, 3))
 
     # Change quantity of test item
     db.changeQuantity("Test Item", 25)
