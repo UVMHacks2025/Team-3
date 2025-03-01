@@ -30,7 +30,7 @@
                 <td>{{row[0]}}</td> <!--Item Name-->
                 <td> <!--Quantity-->
                     {{row[2]}}
-                    <form method="POST" action="{{ url_for('.inventory') }}">
+                    <form method="POST" action="{{ url_for('dashboard') }}">
                         <lable></lable><input type="text" name="new_quantity">
                         <button type="submit">Update</button>
                     </form>
