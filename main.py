@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 
+import data.UserDB as db
+
 app = Flask(__name__,static_folder='static')
 
 
@@ -18,7 +20,6 @@ LOGIN
 """
 @app.route("/login", methods = ['GET','POST'])
 def login():
-    #if login from user
 
     if request.method == 'POST':
         username = request.form.get('username')
