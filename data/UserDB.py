@@ -12,7 +12,7 @@ class Database:
         self.cn = sqlite3.connect('RallyCats.db')
         self.cur = self.cn.cursor()
         self.inventory_df = pd.DataFrame(pd.read_csv("dummy_data.csv"))
-        self.users_df = pd.DataFrame(pd.read_csv("data/user_data.csv"))
+        self.users_df = pd.DataFrame(pd.read_csv("user_data.csv"))
 
     def load_db(self):
         if self.cur.fetchall():
@@ -21,6 +21,11 @@ class Database:
             self.inventory_df.to_sql('Inventory', self.cn, if_exists='replace', index=False)
             self.users_df.to_sql('Users', self.cn, if_exists='replace', index=False)
         #print(self.inventory_df)
+
+    def print_db(self):
+        rows = self.cn.execute("SELECT * FROM Inventory").fetchall()
+        for row in rows:
+            print(row)
 
     def close_db(self):
         self.cn.close()
@@ -101,9 +106,7 @@ def Testing():
     print(db.checkExpirations())
 
     # Print all rows
-    rows = db.cn.execute("SELECT * FROM Inventory").fetchall()
-    for row in rows:
-        print(row)
+    db.print_db()
 
     print("\n--- Tests Completed Successfully ---")
 
