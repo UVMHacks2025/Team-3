@@ -52,10 +52,13 @@ class Database:
 
 
     # Check for expirations
-    def checkExpirations(self, days):
-        query = """SELECT * FROM Inventory WHERE expiration < ?"""
-        self.cur.execute(query, (days,))
-        self.cn.commit()
+    def checkExpirations(self):
+        self.cur.execute("""SELECT * FROM Inventory WHERE expiration <= 30""")
+        expires_soon = self.cur.fetchall()
+        output = []
+        for item in expires_soon:
+            output.append([item[0], item[9]])
+        return output
 
 
 
@@ -69,7 +72,6 @@ class Database:
             output.append([i[0], i[2]])
         return output
 
-    ### Ask representative for quantity threshhold - its 5
 
 
 
@@ -79,7 +81,7 @@ def Testing():
 
     # Add a test item
     db.addItem("Test Item", "Test Brand", 10, "non-perishable",
-               1, 1, 1, 1, 1, datetime(2025, 3, 3))
+               1, 1, 1, 1, 1, "2025-03-11")
 
     # Change quantity of test item
     db.changeQuantity("Test Item", 25)
@@ -90,7 +92,7 @@ def Testing():
     db.removeItem("Test Item")
 
     # Check for expirations less than 30
-    db.checkExpirations(30)
+    #print(db.checkExpirations())
 
     print("\n--- Tests Completed Successfully ---")
 
