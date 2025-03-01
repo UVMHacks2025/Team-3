@@ -16,7 +16,7 @@ print(data)
 class databse:
     # Read in example date
     def setup(cls):
-
+        return 0
     #get connection 
     def connect():
         return sqlite3.connect('./database.db')
