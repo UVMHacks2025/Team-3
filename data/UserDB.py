@@ -4,30 +4,25 @@ import sqlite3
 Databse Management file
 '''
 
-data = pd.DataFrame(pd.read_csv("dummy_data.csv"))
-print(data)
-
-
-
-
-# Read in example date
-#def setup(cls):
-
 class databse:
     # Read in example date
-    def setup(cls):
-
-
+    def __init__(self, df):
+        self.df = df
+        df = pd.DataFrame(pd.read_csv("dummy_data.csv"))
+        cn = sqlite3.connect('RallyCats.db')
+        df.to_sql('Inventory', cn, if_exists='replace', index=False)
 # Initialize sqlite
 
-    database = sqlite3.connect()
-    curs = database.cursor()
+
 
 
 
 # Add item
 
-    
+    def addItem(cn, n, br, amt, cat, don, veget, kosh, vega, hall):
+        cn.execute("""INSERT INTO RALLYCATS (name, brand, quantity, category, 
+                   donor, vegetarian, kosher, vegan, hallal) VALUES ({n}, {br},
+                   {amt}, {cat}, {don}, {veget}, {kosh}, {vega}, {hall})""")
 
 # Remove item
 
