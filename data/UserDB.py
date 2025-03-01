@@ -1,6 +1,7 @@
 import pandas as pd
 import sqlite3
 from datetime import datetime
+import os
 
 '''
 Database Management file
@@ -15,9 +16,9 @@ class Database:
         self.users_df = pd.DataFrame(pd.read_csv("user_data.csv"))
 
     def load_db(self):
-        cn = sqlite3.connect('RallyCats.db')
-        self.inventory_df.to_sql('Inventory', cn, if_exists='replace', index=False)
-        self.users_df.to_sql('Users', cn, if_exists='replace', index=False)
+        if (inventory_contents = self.cur.fetchall()):
+        self.inventory_df.to_sql('Inventory', self.cn, if_exists='replace', index=False)
+        self.users_df.to_sql('Users', self.cn, if_exists='replace', index=False)
         #print(self.inventory_df)
 
 
@@ -86,7 +87,7 @@ def Testing():
     # Change quantity of test item
     db.changeQuantity("Test Item", 25)
 
-    print(db.lowQuanity())
+    #print(db.lowQuanity())
 
     # Remove test item
     db.removeItem("Test Item")
