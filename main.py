@@ -112,6 +112,7 @@ def add():
             expiration = request.form.get('expiration_date')
 
             database.addItem(name,None,amount,category,donor,vegetarian,kosher,vegan,halal,expiration)
+            print(database.cur.execute("SELECT * FROM Inventory").fetchall())
         return render_template("add.html")
     else:
         return redirect(url_for('login'))
