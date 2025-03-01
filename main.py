@@ -38,7 +38,7 @@ def login():
             if username == fields[0] and password == fields[1]:
                 logged_in = True
                 return redirect(url_for('dashboard'))
-            return render_template(url_for('login'), user = username)
+            return redirect(url_for('login'))
         return render_template('login.html', user="")
     else:
         return redirect(url_for('dashboard'))
@@ -127,10 +127,11 @@ def add():
                       #   request.form.get('shellfish'), request.form.get('tree_nuts'), request.form.get('peanuts'),
                       #  request.form.get('wheat'), request.form.get('soybeans'), request.form.get('sesame')]
 
-            tag_list = request.form.get('tags')
-            tags = tag_list.split(',')
-            for i in range(0, len(tags)):
-                tags[i] = tags[i].strip()
+
+            # tag_list = request.form.get('tags')
+            # tags = tag_list.split(',')
+            # for i in range(0, len(tags)):
+            #    tags[i] = tags[i].strip()
 
             requested = request.form.get('requested')
             expiration = request.form.get('expiration_date')
