@@ -4,42 +4,39 @@
 <!--would we want to add a way to search the table?-->
 <div id="inventory_table">
     {% if error %}
-    <p class= "error">{{error}}</p>
+    <p class= "error">Error: {{error}}</p>
     {% endif %}
     <table>
         <trhead>
-            <tr>
-                <th></th>
                 <th>Item Name</th>
                 <th>Quantity</th>
                 <th>Category</th>
                 <th>Add Date</th>
                 <th>Exp Date</th>
                 <th>Donor</th>
-            </tr>
         </trhead>
         <tbody>
         {% for row in rows %} <!--depends on how the database is setup-->
         <!-- Possibly add css to make row be red if low in stock and green if high in stock-->
         {% if row[2] <= 5 %}
-            <th class="low">
+            <tr class="low">
         {% elif row[2]  <= 10 %}
-            <th class="medium">
+            <tr class="medium">
         {% else %}
-            <th class="high">
+            <tr class="high">
         {% endif %}
                 <td>{{row[0]}}</td> <!--Item Name-->
                 <td> <!--Quantity-->
                     <form method="POST" action="{{ url_for('dashboard') }}">
-                        <label>{{row[2]}}&nbsp;</label><input type="number" name="new_quantity">
-                        <button type="submit" width="50%">Update</button>
+                        <label>{{row[2]}}&nbsp;</label><input type="text" name="new_quantity">
+                        <button type="submit">Update</button>
                     </form>
                 </td> 
                 <td>{{row[3]}}</td> <!--Category-->
                 <td>{{row[4]}}</td> <!--Add Date-->
                 <td>{{row[5]}}</td> <!--Exp Date-->
                 <td>{{row[6]}}</td> <!--Donor-->
-            </th>
+            </tr>
         {% endfor %}
         </tbody>
 
