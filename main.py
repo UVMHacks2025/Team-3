@@ -16,7 +16,7 @@ def home():
 LOGIN
 """
 @app.route("/login", methods = ['GET','POST'])
-def home():
+def login():
     #if login from user
     if request.method == 'POST':
         username = request.form.get('username')
@@ -31,8 +31,13 @@ def home():
 INVENTORY DASHBOARD
 """
 @app.route("/dashboard", methods = ['GET','POST'])
-def home():
+def dashboard():
     return render_template("home.html")
 
-
+"""
+ADD ITEM
+"""
+@app.route("/add", methods = ['GET','POST'])
+def add():
+    return render_template("add.html")
 
