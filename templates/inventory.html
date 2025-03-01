@@ -21,7 +21,7 @@
         {% for row in rows %} <!--depends on how the database is setup-->
         <!-- Possibly add css to make row be red if low in stock and green if high in stock-->
         {% if row[2] <= 5 %}
-            <th background-color="red">
+            <th color="red">
         {% elif row[2]  <= 10 %}
             <th background-color="yellow">
         {% else %}
