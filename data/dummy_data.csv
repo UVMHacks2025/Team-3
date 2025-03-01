@@ -1,21 +1,21 @@
 name,brand,quantity,category,donor,vegetarian,kosher,vegan,hallal,expiration
-"Mac n' Cheese","Kraft",20,"non-perishable","Hannafords",1,0,0,0,"2026-06-01"
-"White Bread","Sarah Lee",5,"grain","Hannafords",1,1,1,1,"2025-04-15"
-"Black Beans","Goya",30,"non-perishable","Hannafords",1,1,1,1,"2027-08-10"
-"Peanut Butter","Jif",10,"non-perishable","Hannafords",1,1,1,1,"2026-06-22"
-"Spaghetti","Barilla",15,"grain","Hannafords",1,1,1,1,"2027-02-14"
-"Canned Tuna","StarKist",12,"non-perishable","Hannafords",1,0,0,0,"2027-11-30"
-"Brown Rice","Lundberg",25,"grain","Hannafords",1,1,1,1,"2027-04-05"
-"Tomato Soup","Campbell's",18,"non-perishable","Hannafords",1,1,1,1,"2026-09-12"
-"Whole Milk","Horizon",8,"dairy","Hannafords",1,1,1,1,"2025-03-20"
-"Cheddar Cheese","Tillamook",10,"dairy","Hannafords",1,1,1,1,"2025-04-05"
-"Chicken Noodle Soup","Progresso",20,"non-perishable","Hannafords",1,0,1,0,"2026-11-08"
-"Almond Milk","Silk",14,"dairy alternative","Hannafords",1,1,1,1,"2025-06-01"
-"Frozen Mixed Vegetables","Birds Eye",12,"frozen","Hannafords",1,1,1,1,"2026-10-10"
-"Apples","None",30,"fresh produce","Hannafords",1,1,1,1,"2025-03-10"
-"Ground Beef","None",20,"meat","Hannafords",1,0,0,0,"2025-03-08"
-"Eggs","Eggland's Best",18,"dairy","Hannafords",1,1,1,1,"2025-04-15"
-"Oatmeal","Quaker",22,"grain","Hannafords",1,1,1,1,"2026-07-20"
-"Canned Chickpeas","Bush's",16,"non-perishable","Hannafords",1,1,1,1,"2027-10-25"
+"Mac n' Cheese","Kraft",20,"non-perishable","Hannafords",1,0,0,0,12
+"White Bread","Sarah Lee",5,"grain","Hannafords",1,1,1,1,22
+"Black Beans","Goya",30,"non-perishable","Hannafords",1,1,1,1,22
+"Peanut Butter","Jif",10,"non-perishable","Hannafords",1,1,1,1,22
+"Spaghetti","Barilla",15,"grain","Hannafords",1,1,1,1,32
+"Canned Tuna","StarKist",12,"non-perishable","Hannafords",1,0,0,0,64
+"Brown Rice","Lundberg",25,"grain","Hannafords",1,1,1,1,26
+"Tomato Soup","Campbell's",18,"non-perishable","Hannafords",1,1,1,1,10
+"Whole Milk","Horizon",8,"dairy","Hannafords",1,1,1,1,6
+"Cheddar Cheese","Tillamook",10,"dairy","Hannafords",1,1,1,1,60
+"Chicken Noodle Soup","Progresso",20,"non-perishable","Hannafords",1,0,1,0,50
+"Almond Milk","Silk",14,"dairy alternative","Hannafords",1,1,1,1,35
+"Frozen Mixed Vegetables","Birds Eye",12,"frozen","Hannafords",1,1,1,1,50
+"Apples","None",30,"fresh produce","Hannafords",1,1,1,1,22
+"Ground Beef","None",20,"meat","Hannafords",1,0,0,0,30
+"Eggs","Eggland's Best",18,"dairy","Hannafords",1,1,1,1,30
+"Oatmeal","Quaker",22,"grain","Hannafords",1,1,1,1,40
+"Canned Chickpeas","Bush's",16,"non-perishable","Hannafords",1,1,1,1,30
 
 
