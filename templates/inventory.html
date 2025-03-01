@@ -3,7 +3,9 @@
 <!--this page shows inventory and then allows the user to select plus or minus amount of the inventory -->
 <!--would we want to add a way to search the table?-->
 <div id="inventory_table">
-    {%}
+    {% if error %}
+    <p color = "red">{{error}}</p>
+    {%e endif %}
     <table>
         <trhead>
             <tr>
