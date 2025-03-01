@@ -10,7 +10,7 @@ div
 .CheckBoxArray 
 {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 body {
     font-family: 'Roboto', sans-serif;
