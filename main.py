@@ -56,6 +56,10 @@ ADD ITEM
 """
 @app.route("/add", methods = ['GET','POST'])
 def add():
+    if request.method == "POST":
+        name = request.form.get("name")
+        brand = request.form.get("brand")
+
 
 
     return render_template("add.html")
