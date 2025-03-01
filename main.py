@@ -64,13 +64,18 @@ def dashboard():
     # #make rows be all the rows of the db
     # rows = [["Mac and Cheese", "Kraft", 3, "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
     
+    if request.method == "POST":   
+        keyvalue = request.form.name 
+        print(keyvalue)
+        
+        render_template("inventory.html",keyvalue)
+
+
     database = db.Database()
     database.load_db()
     string = database.cur.execute(f'SELECT * FROM Inventory').fetchall()
     print(string)
-    return render_template("home.html",
-                            string =  string ,
-                            )
+    return render_template("inventory.html")
 
 """
 ADD ITEM

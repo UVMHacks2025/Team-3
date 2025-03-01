@@ -29,9 +29,9 @@ class Database:
                        donor, vegetarian, kosher, vegan, hallal, expiration) 
                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
         try:
-            target_date = exp
+            target_date = datetime.strptime(exp, "%Y-%m-%d")  
             current_date = datetime.now()
-            expiration = (str) (target_date - current_date).days + 1
+            expiration = exp
             print(expiration)
         except ValueError:
             print('Expiration date conversion failed')
