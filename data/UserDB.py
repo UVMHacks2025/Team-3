@@ -34,10 +34,10 @@ class Database:
 
     # Add item
 
-    def addItem(self, n, br, amt, cat, don, veget, kosh, vega, hall, exp):
+    def addItem(self, n, br, amt, cat, don, veget, kosh, vega, hall, exp, req):
         query = """INSERT INTO Inventory (name, brand, quantity, category, 
-                       donor, vegetarian, kosher, vegan, hallal, expiration) 
-                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+                       donor, vegetarian, kosher, vegan, hallal, expiration, requested) 
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
         try:
             year = exp[0:4]
             month = exp[5:7]
@@ -49,7 +49,7 @@ class Database:
             expiration = (target_date - current_date).days + 1
         except ValueError:
             print('Expiration date conversion failed')
-        self.cur.execute(query, (n, br, amt, cat, don, veget, kosh, vega, hall, expiration))
+        self.cur.execute(query, (n, br, amt, cat, don, veget, kosh, vega, hall, expiration, req))
         self.cn.commit()
 
 # Remove item
@@ -97,7 +97,7 @@ def Testing():
 
     # Add a test item
     db.addItem("Test Item", "Test Brand", 10, "non-perishable",
-               1, 1, 1, 1, 1, "2025-03-11")
+               1, 1, 1, 1, 1, "2025-03-11", 0)
 
     # Change quantity of test item
     db.changeQuantity("Test Item", 25)
