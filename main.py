@@ -17,6 +17,12 @@ LOGIN
 """
 @app.route("/login", methods = ['GET','POST'])
 def home():
+    #if login from user
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+
     return render_template("home.html")
 
 
