@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<link rel="stylesheet" href="../static/styles/layout.css">
 <div id="login_form">
     <p>To sign in, input your Username and Password below:</p>
     <form method="POST" action="{{url_for('login')}}"> <!-- add in action from FLASK -->
