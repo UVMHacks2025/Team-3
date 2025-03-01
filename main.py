@@ -113,7 +113,7 @@ def add():
 
         database.addItem(name,None,amount,category,donor,vegetarian,kosher,vegan,halal,expiration)
 
-
+    print(database.cur.execute(f'SELECT * FROM Inventory').fetchall())
     return render_template("add.html")
 
 if __name__ == "__main__":
