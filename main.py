@@ -24,6 +24,21 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
+        print(password)
+
+
+        render_template("home.html", user = username)
+
+    return render_template("login.html", user = "")
+
+
+"""
+REGISTER
+"""
+@app.route("/register", methods = ['GET','POST'])
+def register():
+    #if login from user
+
 
         #user db login info 
 
