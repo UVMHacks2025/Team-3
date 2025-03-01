@@ -35,10 +35,26 @@ def login():
 INVENTORY DASHBOARD
 """
 @app.route("/dashboard", methods = ['GET','POST'])
-def dashboard():
-    return render_template("dashboard.html")
+def home():
+    if request.method == "POST":
+        quantity = request.form.get("new_quantity") #data verification
+        if quantity.isDigit():
+            #Update Database with new quantity for inventory
+            pass
+        else:
+            #send message saying the db has not been updated
+            error = "Invalid Input. Database has not been update."
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    rows = ["Mac and Cheese", "Kraft", "3", "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] #update with database
+    return render_template("inventory.html", 
+                           page_title = "Inventory",
+                           rows = rows,
+                           error = error)
 
+"""
+ADD ITEM
+"""
+@app.route("/add", methods = ['GET','POST'])
+def add():
+    return render_template("add.html")
 

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<form method="POST" action="{{ url_for('add_item') }}">
+<form method="POST" action="{{ url_for('add') }}">
   <section class="TODO">
 
     <label for="Name">Name</label>
@@ -10,6 +10,7 @@
     <label for="Brand">Brand</label>
     <input type="text" name="Brand" id="Brand" />
 
+    <h4>Dietary Restrictions</h4>
     <label for="kosher">Kosher</label>
     <input type="checkbox" id="kosher" name="dietary_restrictions" value="kosher" />
     <label for="halal">Halal</label>
@@ -19,6 +20,34 @@
     <label for="vegan">Vegan</label>
     <input type="checkbox" id="vegan" name="dietary_restrictions" value="vegan" />
 
+    <h4>Allergens</h4>
+    <label for="dairy">Dairy</label>
+    <input type="checkbox" id="dairy" name="allergens" value="dairy" />
+    <label for="eggs">Eggs</label>
+    <input type="checkbox" id="eggs" name="allergens" value="eggs" />
+    <label for="fish">Fish</label>
+    <input type="checkbox" id="fish" name="allergens" value="fish" />
+    <label for="shellfish">Shellfish</label>
+    <input type="checkbox" id="shellfish" name="allergens" value="shellfish" />
+    <label for="tree_nuts">Tree Nuts</label>
+    <input type="checkbox" id="tree_nuts" name="allergens" value="tree_nuts" />
+    <label for="peanuts">Peanuts</label>
+    <input type="checkbox" id="peanuts" name="allergens" value="peanuts" />
+    <label for="wheat">Wheat</label>
+    <input type="checkbox" id="wheat" name="allergens" value="wheat" />
+    <label for="soybeans">Soybeans</label>
+    <input type="checkbox" id="soybeans" name="allergens" value="soybeans" />
+    <label for="sesame">Sesame</label>
+    <input type="checkbox" id="sesame" name="allergens" value="sesame" />
+
+
+    <label for="tags">Tags</label>
+    <input type="text" name="tags" id="tags" />
+
+    <label for="expiration_date">Expiration Date</label>
+    <input type="date" name="expiration_date" id="expiration_date">
+
+    <input type="submit" value="submit">
   </section>
 </form>
 

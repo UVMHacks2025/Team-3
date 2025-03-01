@@ -1,17 +1,41 @@
 {% extends "layout.html" %}
 {% block content %}
+<!--this page shows inventory and then allows the user to select plus or minus amount of the inventory -->
+<!--would we want to add a way to search the table?-->
 <div id="inventory_table">
+    {%}
     <table>
-        <tr>
-            <th>Item Name</th>
-            <th>Brand</th>
-            <th>Quantity</th>
-            <th>Category</th>
-            <th>Add Date</th>
-            <th>Exp Date</th>
-            <th>Donor</th>
-        </tr>
-        
+        <trhead>
+            <tr>
+                <th>Item Name</th>
+                <th>Brand</th>
+                <th>Quantity</th>
+                <th>Category</th>
+                <th>Add Date</th>
+                <th>Exp Date</th>
+                <th>Donor</th>
+            </tr>
+        </trhead>
+        <tbody>
+        {% for row in rows %} <!--depends on how the database is setup-->
+        <th>
+            <td>{{row[]}}</td> <!--Item Name-->
+            <td>{{row[]}}</td> <!--Brand-->
+            <td> <!--Quantity-->
+                {{row[]}}
+                <form method="POST" action="{{ url_for('.inventory') }}">
+                    <lable></lable><input type="text" name="new_quantity">
+                    <button type="submit">Update</button>
+                </form>
+            </td> 
+            <td>{{row[]}}</td> <!--Category-->
+            <td>{{row[]}}</td> <!--Add Date-->
+            <td>{{row[]}}</td> <!--Exp Date-->
+            <td>{{row[]}}</td> <!--Donor-->
+        </th>
+        {% endfor %}
+        </tbody>
+
     </table>
 </div>
 {% endblock %}
