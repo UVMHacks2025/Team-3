@@ -110,37 +110,38 @@ ADD ITEM
 """
 @app.route("/add", methods = ['GET','POST'])
 def add():
-    database = db.Database()
-    database.load_db()
+    if logged_in:
+        database = db.Database()
+        database.load_db()
 
-    if request.method == "POST":
-        name = request.form.get("name")
-        amount = request.form.get("amount")
-        donor = request.form.get("donor")
-        category = request.form.get("category")
-        dietary_restrictions = [request.form.get('kosher'), request.form.get('halal'),
-                                request.form.get('vegetarian'), request.form.get('vegan')]
-        kosher = dietary_restrictions[0]
-        halal = dietary_restrictions[1]
-        vegetarian = dietary_restrictions[2]
-        vegan = dietary_restrictions[3]
-       # allergens = [request.form.get('dairy'), request.form.get('eggs'), request.form.get('fish'),
-                  #   request.form.get('shellfish'), request.form.get('tree_nuts'), request.form.get('peanuts'),
-                  #  request.form.get('wheat'), request.form.get('soybeans'), request.form.get('sesame')]
-        
-        tag_list = request.form.get('tags')
-        tags = tag_list.split(',')
-        for i in range(0, len(tags)):
-            tags[i] = tags[i].strip()
+        if request.method == "POST":
+            name = request.form.get("name")
+            amount = request.form.get("amount")
+            donor = request.form.get("donor")
+            category = request.form.get("category")
+            dietary_restrictions = [request.form.get('kosher'), request.form.get('halal'),
+                                    request.form.get('vegetarian'), request.form.get('vegan')]
+            kosher = dietary_restrictions[0]
+            halal = dietary_restrictions[1]
+            vegetarian = dietary_restrictions[2]
+            vegan = dietary_restrictions[3]
+           # allergens = [request.form.get('dairy'), request.form.get('eggs'), request.form.get('fish'),
+                      #   request.form.get('shellfish'), request.form.get('tree_nuts'), request.form.get('peanuts'),
+                      #  request.form.get('wheat'), request.form.get('soybeans'), request.form.get('sesame')]
 
-        date = datetime.date.today()
-        requested = request.form.get('requested')
-        expiration = request.form.get('expiration_date')
+            tag_list = request.form.get('tags')
+            tags = tag_list.split(',')
+            for i in range(0, len(tags)):
+                tags[i] = tags[i].strip()
 
-        database.addItem(name,None,amount,category,donor,vegetarian,kosher,vegan,halal,expiration)
+            date = datetime.date.today()
+            requested = request.form.get('requested')
+            expiration = request.form.get('expiration_date')
 
-
-    return render_template("add.html")
+            database.addItem(name,None,amount,category,donor,vegetarian,kosher,vegan,halal,expiration)
+        return render_template("add.html")
+    else:
+        return redirect(url_for('login'))
 
 if __name__ == "__main__":
     global LOGGED_IN
