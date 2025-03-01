@@ -1,3 +1,4 @@
+from apsw.unicode import strip
 from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__,static_folder='static')
@@ -66,7 +67,10 @@ def add():
                      request.form.get('shellfish'), request.form.get('tree_nuts'), request.form.get('peanuts'),
                      request.form.get('wheat'), request.form.get('soybeans'), request.form.get('sesame')]
         tag_list = request.form.get('tags')
-        # TODO: Add splitting the tags by commas
+        tags = tag_list.split(',')
+        for i in range(0, len(tags)):
+            tags[i] = tags[i].strip()
+
         date = request.form.get('date')
 
         # TODO: Put into database
