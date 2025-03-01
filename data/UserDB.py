@@ -16,9 +16,11 @@ class Database:
         self.users_df = pd.DataFrame(pd.read_csv("user_data.csv"))
 
     def load_db(self):
-        if (inventory_contents = self.cur.fetchall()):
-        self.inventory_df.to_sql('Inventory', self.cn, if_exists='replace', index=False)
-        self.users_df.to_sql('Users', self.cn, if_exists='replace', index=False)
+        if self.cur.fetchall():
+            print("Database loaded")
+        else:
+            self.inventory_df.to_sql('Inventory', self.cn, if_exists='replace', index=False)
+            self.users_df.to_sql('Users', self.cn, if_exists='replace', index=False)
         #print(self.inventory_df)
 
 
@@ -93,7 +95,8 @@ def Testing():
     db.removeItem("Test Item")
 
     # Check for expirations less than 30
-    #print(db.checkExpirations())
+    print(db.checkExpirations())
+
 
     print("\n--- Tests Completed Successfully ---")
 
