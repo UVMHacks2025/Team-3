@@ -5,7 +5,7 @@
 <div id="inventory_table">
     {% if error %}
     <p color = "red">{{error}}</p>
-    {%e endif %}
+    {% endif %}
     <table>
         <trhead>
             <tr>
@@ -20,21 +20,28 @@
         </trhead>
         <tbody>
         {% for row in rows %} <!--depends on how the database is setup-->
-        <th>
-            <td>{{row[]}}</td> <!--Item Name-->
-            <td>{{row[]}}</td> <!--Brand-->
-            <td> <!--Quantity-->
-                {{row[]}}
-                <form method="POST" action="{{ url_for('.inventory') }}">
-                    <lable></lable><input type="text" name="new_quantity">
-                    <button type="submit">Update</button>
-                </form>
-            </td> 
-            <td>{{row[]}}</td> <!--Category-->
-            <td>{{row[]}}</td> <!--Add Date-->
-            <td>{{row[]}}</td> <!--Exp Date-->
-            <td>{{row[]}}</td> <!--Donor-->
-        </th>
+        <!-- Possibly add css to make row be red if low in stock and green if high in stock-->
+        {% if row[#Quantity] <= 5 %}
+            <th background-color="red">
+        {% elif row[#Quantity]  <= 10 %}
+            <th background-color="yellow">
+        {% else %}
+            <th background-color="green">
+        {% endif %}
+                <td>{{row[]}}</td> <!--Item Name-->
+                <td>{{row[]}}</td> <!--Brand-->
+                <td> <!--Quantity-->
+                    {{row[]}}
+                    <form method="POST" action="{{ url_for('.inventory') }}">
+                        <lable></lable><input type="text" name="new_quantity">
+                        <button type="submit">Update</button>
+                    </form>
+                </td> 
+                <td>{{row[]}}</td> <!--Category-->
+                <td>{{row[]}}</td> <!--Add Date-->
+                <td>{{row[]}}</td> <!--Exp Date-->
+                <td>{{row[]}}</td> <!--Donor-->
+            </th>
         {% endfor %}
         </tbody>
 

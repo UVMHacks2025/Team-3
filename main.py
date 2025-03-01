@@ -40,13 +40,14 @@ def dashboard():
     if request.method == "POST":
         quantity = request.form.get("new_quantity") #data verification
         if quantity.isDigit():
-            #Update Database with new quantity for inventory
+            #Update db with new quantity for inventory
             pass
         else:
             #send message saying the db has not been updated
             error = "Invalid Input. Database has not been update."
 
-    rows = [["Mac and Cheese", "Kraft", "3", "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]#update with database
+    #make rows be all the rows of the db
+    rows = [["Mac and Cheese", "Kraft", "3", "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
     return render_template("inventory.html", 
                            page_title = "Inventory",
                            rows = rows,
