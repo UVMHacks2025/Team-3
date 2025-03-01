@@ -1,3 +1,56 @@
-.Name_Label {
+.add_form {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 50px;
+}
 
+.Form_Label {
+    font-size-adjust:.6;
+    font-weight: bold;
+}
+
+.CheckBoxArray {
+}
+
+.item_name{
+   grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.item_donor{
+    grid-row: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.item_diet{
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    height: 100%;
+}
+
+.item_expiration{
+    grid-row: 1;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.item_tags{
+    grid-row: 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.item_requested{
+    grid-row: 3;
+}
+
+.item_submit{
+    grid-row: 4;
+}
+
+textarea {
+    width: 80%;
+    height: 75%;
 }
