@@ -20,21 +20,21 @@ class Database:
 
 
     # Add item
-    def addItem(cn, n, br, amt, cat, don, veget, kosh, vega, hall):
-        cn.execute("""INSERT INTO RALLYCATS (name, brand, quantity, category, 
+    def addItem(self, n, br, amt, cat, don, veget, kosh, vega, hall):
+        self.cn.execute("""INSERT INTO RALLYCATS (name, brand, quantity, category, 
                    donor, vegetarian, kosher, vegan, hallal) VALUES ({n}, {br},
                    {amt}, {cat}, {don}, {veget}, {kosh}, {vega}, {hall})""")
-        cn.commit()
+        self.cn.commit()
 
 # Remove item
-    def removeItem(cn, n):
-        cn.execute("""DELETE FROM RALLYCATS WHERE name = {n}""")
-        cn.commit()
+    def removeItem(self, n):
+        self.cn.execute("""DELETE FROM RALLYCATS WHERE name = {n}""")
+        self.cn.commit()
 
 # Change quantity
-    def changeQuantity(cn, n, amt):
-        cn.execute("""UPDATE RALLYCATS SET quantity = {amt} WHERE name = {n}""")
-        cn.commit()
+    def changeQuantity(self, n, amt):
+        self.cn.execute("""UPDATE RALLYCATS SET quantity = {amt} WHERE name = {n}""")
+        self.cn.commit()
 
 # Check for expirations
 
