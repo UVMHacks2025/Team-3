@@ -8,6 +8,8 @@ HOME PAGE
 """
 @app.route("/", methods = ['GET','POST'])
 def home():
+
+    
     return render_template("home.html")
 
 
@@ -16,14 +18,12 @@ def home():
 LOGIN
 """
 @app.route("/login", methods = ['GET','POST'])
-def home():
+def login():
     #if login from user
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
 
+        #user db login info 
 
-    return render_template("home.html")
+    return render_template("login.html")
 
 
 
@@ -31,8 +31,10 @@ def home():
 INVENTORY DASHBOARD
 """
 @app.route("/dashboard", methods = ['GET','POST'])
-def home():
-    return render_template("home.html")
+def dashboard():
+    return render_template("dashboard.html")
 
+if __name__ == '__main__':
+    app.run(debug=True)
 
 

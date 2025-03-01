@@ -2,7 +2,7 @@
 {% block content %}
 <div id="login_form">
     <p>To sign in, input your Username and Password below:</p>
-    <form method="POST" action=""> <!-- add in action from FLASK -->
+    <form method="POST" action="{{url_for('login')}}"> <!-- add in action from FLASK -->
         <label for="username">Username:</label><input
             class="form-control" type="text" id="username"
             name="username" required><br/>

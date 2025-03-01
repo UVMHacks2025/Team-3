@@ -16,18 +16,19 @@ print(data)
 class databse:
     # Read in example date
     def setup(cls):
-        return 0
-    #get connection 
-    def connect():
-        return sqlite3.connect('./database.db')
+        database = sqlite3.connect()
+        cls = database.cursor()
+
 
 # Initialize sqlite
 
-
+    
 
 
 
 # Add item
+
+
 
 # Remove item
 
