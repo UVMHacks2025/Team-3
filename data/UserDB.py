@@ -3,9 +3,17 @@ import sqlite3
 '''
 Databse Management file
 '''
-class database:
+
+data = pd.DataFrame(pd.read_csv("dummy_data.csv"))
+print(data)
 
 
+
+
+# Read in example date
+#def setup(cls):
+
+class databse:
     # Read in example date
     def setup(cls):
 
@@ -13,17 +21,17 @@ class database:
     def connect():
         return sqlite3.connect('./database.db')
 
-    # Initialize sqlite
+# Initialize sqlite
 
 
 
 
 
-    # Add item
+# Add item
 
-    # Remove item
+# Remove item
 
-    # Check for expirations
+# Check for expirations
 
-    # Check for low quantity
-    ## Ask representative for quantity threshhold
+# Check for low quantity
+## Ask representative for quantity threshhold
