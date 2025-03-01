@@ -44,7 +44,7 @@ def home():
     rows = ["Mac and Cheese", "Kraft", "3", "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] #update with database
     return render_template("inventory.html", 
                            page_title = "Inventory",
-                           rows = rows
+                           rows = rows,
                            error = error)
 
 """
