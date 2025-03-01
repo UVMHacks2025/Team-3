@@ -1,4 +1,4 @@
-name,brand,quantity,category,donor,vegetarian,kosher,vegan,hallal,expiration, requested
+name,brand,quantity,category,donor,vegetarian,kosher,vegan,hallal,expiration,requested
 "Mac n' Cheese","Kraft",20,"non-perishable","Hannafords",1,0,0,0,12,0
 "White Bread","Sarah Lee",5,"grain","Hannafords",1,1,1,1,22,0
 "Black Beans","Goya",30,"non-perishable","Hannafords",1,1,1,1,22,0
