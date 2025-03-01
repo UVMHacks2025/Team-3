@@ -1,7 +1,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 h1{
-    padding-bottom: 10em;
+    padding-bottom: 2.5em;
+}
+div
+{
+    width: 95%;
+}
+.CheckBoxArray 
+{
+    display: flex;
+    flex-direction: column-reverse;
 }
 body {
     font-family: 'Roboto', sans-serif;
