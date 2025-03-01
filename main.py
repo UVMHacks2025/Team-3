@@ -52,7 +52,6 @@ def dashboard():
         error = 0
         #make rows be all the rows of the db
         database = db.Database()
-        database.load_db()
         if request.method == "POST":
             item_name = request.form.get('Button') #get item name from button value
 
@@ -112,7 +111,6 @@ ADD ITEM
 def add():
     if logged_in:
         database = db.Database()
-        database.load_db()
 
         if request.method == "POST":
             name = request.form.get("name")
