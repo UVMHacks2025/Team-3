@@ -49,33 +49,36 @@ INVENTORY DASHBOARD
 """
 @app.route("/dashboard", methods = ['GET','POST'])
 def dashboard():
-    error = 0
-    #make rows be all the rows of the db
-    database = db.Database()
-    database.load_db()
-    if request.method == "POST":
-        item_name = request.form.get('Button') #get item name from button value
+    if logged_in:
+        error = 0
+        #make rows be all the rows of the db
+        database = db.Database()
+        database.load_db()
+        if request.method == "POST":
+            item_name = request.form.get('Button') #get item name from button value
 
-        if request.form.get("new_quantity"):
-            quantity = request.form.get("new_quantity") #data verification
-            #TESTING
-            print(item_name)
-            if quantity.isdigit():
-                #Update db with new quantity for inventory
-                database.changeQuantity(item_name, quantity)
+            if request.form.get("new_quantity"):
+                quantity = request.form.get("new_quantity") #data verification
+                #TESTING
+                print(item_name)
+                if quantity.isdigit():
+                    #Update db with new quantity for inventory
+                    database.changeQuantity(item_name, quantity)
+                    redirect(url_for('dashboard'))
+                else:
+                    #send message saying the db has not been updated
+                    error = "Invalid Input. Database has not been update."
             else:
-                #send message saying the db has not been updated
-                error = "Invalid Input. Database has not been update."
-        else:
-            database.removeItem(item_name)
+                database.removeItem(item_name)
+                redirect(url_for('dashboard'))
 
-    rows = database.cur.execute("SELECT * FROM Inventory").fetchall()
-    return render_template("inventory.html",
-                               page_title = "Inventory",
-                               rows = rows,
-                               error = error)
+        rows = database.cur.execute("SELECT * FROM Inventory").fetchall()
+        return render_template("inventory.html",
+                                page_title = "Inventory",
+                                rows = rows,
+                                error = error)
     else:
-        return render_template('login.html')
+        return redirect(url_for('login'))
 """
     if request.method == "POST":
         quantity = request.form.get("new_quantity") #data verification
