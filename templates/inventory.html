@@ -3,7 +3,6 @@
 <!--this page shows inventory and then allows the user to select plus or minus amount of the inventory -->
 <!--would we want to add a way to search the table?-->
 <a href="{{ url_for('add') }}">Add New Items</a>
-<link rel="stylesheet" href="../static/styles/layout.css">
 <div id="inventory_table">
     {% if error %}
     <p class= "error">Error: {{error}}</p>
