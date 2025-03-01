@@ -23,22 +23,24 @@ class Database:
     # Add item
 
     def addItem(self, n, br, amt, cat, don, veget, kosh, vega, hall):
-        self.cur.execute("""INSERT INTO Inventory (name, brand, quantity, category, 
-                   donor, vegetarian, kosher, vegan, hallal) VALUES ("test", "test", 1, "test", "test", 0, 0, 0, 0)""")
+        query = """INSERT INTO Inventory (name, brand, quantity, category, 
+                       donor, vegetarian, kosher, vegan, hallal) 
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+        self.cur.execute(query, (n, br, amt, cat, don, veget, kosh, vega, hall))
         self.cn.commit()
 
 # Remove item
     def removeItem(self, n):
-        self.cn.execute("""DELETE FROM RALLYCATS WHERE name = {n}""")
+        self.cur.execute("""DELETE FROM Inventory WHERE name = {n}""")
         self.cn.commit()
 
 # Change quantity
     def changeQuantity(self, n, amt):
-        self.cn.execute("""UPDATE RALLYCATS SET quantity = {amt} WHERE name = {n}""")
+        self.cur.execute("""UPDATE Inventory SET quantity = {amt} WHERE name = {n}""")
         self.cn.commit()
     # Change quantity
     def changeQuantity(self, n, amt):
-        self.cn.execute("""UPDATE RALLYCATS SET quantity = {amt} WHERE name = {n}""")
+        self.cur.execute("""UPDATE Inventory SET quantity = {amt} WHERE name = {n}""")
         self.cn.commit()
 
     # Check for expirations
