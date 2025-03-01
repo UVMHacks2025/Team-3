@@ -47,7 +47,7 @@ def dashboard():
             error = "Invalid Input. Database has not been update."
 
     #make rows be all the rows of the db
-    rows = [["Mac and Cheese", "Kraft", "3", "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
+    rows = [["Mac and Cheese", "Kraft", 3, "Vegetarian", "3/1/2025", "3/8/2025", "Hannafords"] ]
     return render_template("inventory.html", 
                            page_title = "Inventory",
                            rows = rows,

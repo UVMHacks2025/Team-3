@@ -10,7 +10,6 @@
         <trhead>
             <tr>
                 <th>Item Name</th>
-                <th>Brand</th>
                 <th>Quantity</th>
                 <th>Category</th>
                 <th>Add Date</th>
@@ -29,7 +28,6 @@
             <th background-color="green">
         {% endif %}
                 <td>{{row[0]}}</td> <!--Item Name-->
-                <td>{{row[1]}}</td> <!--Brand-->
                 <td> <!--Quantity-->
                     {{row[2]}}
                     <form method="POST" action="{{ url_for('.inventory') }}">
