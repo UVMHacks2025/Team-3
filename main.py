@@ -110,7 +110,7 @@ def add():
             requested = request.form.get('requested')
             expiration = request.form.get('expiration_date')
 
-            database.addItem(name,None,amount,category,donor,vegetarian,kosher,vegan,halal,expiration)
+            database.addItem(name,None,amount,category,donor,vegetarian,kosher,vegan,halal,expiration,requested)
             print(database.cur.execute("SELECT * FROM Inventory").fetchall())
         return render_template("add.html")
     else:
