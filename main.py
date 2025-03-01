@@ -59,7 +59,10 @@ def add():
     if request.method == "POST":
         name = request.form.get("name")
         brand = request.form.get("brand")
-
+        dietary_restrictions = [request.form.get('kosher'), request.form.get('halal'),
+                                request.form.get('vegetarian'), request.form.get('vegan')]
+        allergens = [request.form.get('dairy'), request.form.get('eggs'), request.form.get('fish'),
+                     request.form.get('shellfish'), request.form.get('tree_nuts')]
 
 
     return render_template("add.html")
