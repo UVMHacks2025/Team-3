@@ -56,12 +56,10 @@ def dashboard():
     database = db.Database()
     database.load_db()
     if request.method == "POST":
-        if request.form.get('button') == "Delete":
-            item_name = request.form.get("button")
-            database.removeItem(item_name)
-        elif request.form.get('button') == "Update":
+        item_name = request.form.get('Button') #get item name from button value
+
+        if request.form.get("new_quantity"):
             quantity = request.form.get("new_quantity") #data verification
-            item_name = request.form.get("button")
             #TESTING
             print(item_name)
             if quantity.isdigit():
@@ -70,6 +68,8 @@ def dashboard():
             else:
                 #send message saying the db has not been updated
                 error = "Invalid Input. Database has not been update."
+        else:
+            database.removeItem(item_name)
 
     rows = database.cur.execute("SELECT * FROM Inventory").fetchall()
     return render_template("inventory.html", 
