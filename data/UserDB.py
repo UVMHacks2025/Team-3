@@ -23,7 +23,9 @@ class Database:
             self.users_df.to_sql('Users', self.cn, if_exists='replace', index=False)
         #print(self.inventory_df)
 
-
+    def close_db(self):
+        self.cn.close()
+        self.cur.close()
 
     # Add item
 
@@ -61,6 +63,7 @@ class Database:
         output = []
         for item in expires_soon:
             output.append([item[0], item[9]])
+        self.cn.commit()
         return output
 
 
@@ -73,6 +76,7 @@ class Database:
         output = []
         for i in low:
             output.append([i[0], i[2]])
+        self.cn.commit()
         return output
 
 
@@ -89,7 +93,7 @@ def Testing():
     # Change quantity of test item
     db.changeQuantity("Test Item", 25)
 
-    #print(db.lowQuanity())
+    #print(db.lowQuantity())
 
     # Remove test item
     db.removeItem("Test Item")
