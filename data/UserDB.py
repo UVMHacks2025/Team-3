@@ -35,16 +35,35 @@ class Database:
     def changeQuantity(self, n, amt):
         self.cn.execute("""UPDATE RALLYCATS SET quantity = {amt} WHERE name = {n}""")
         self.cn.commit()
+    # Change quantity
+    def changeQuantity(self, n, amt):
+        self.cn.execute("""UPDATE RALLYCATS SET quantity = {amt} WHERE name = {n}""")
+        self.cn.commit()
 
-# Check for expirations
+    # Check for expirations
 
-# Check for low quantity
-## Ask representative for quantity threshhold
+    # Check for low quantity
+    ### Ask representative for quantity threshhold
+
 
 
 def Testing():
     db = Database()
     db.load_db()
+
+    print("\n--- Running Tests ---")
+
+    # Add a test item
+    db.addItem("Test Item", "Test Brand", 10, "non-perishable", 1, 1, 1, 1, 1)
+
+    # Change quantity of test item
+    db.changeQuantity("Test Item", 25)
+
+    # Remove test item
+    db.removeItem("Test Item")
+
+    print("\n--- Tests Completed Successfully ---")
+
 
 if __name__ == '__main__':
     Testing()
