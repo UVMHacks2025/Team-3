@@ -1,3 +1,5 @@
+import datetime
+
 from flask import Flask, render_template, request, url_for, redirect
 
 import data.UserDB as db
@@ -92,36 +94,24 @@ def add():
         category = request.form.get("category")
         dietary_restrictions = [request.form.get('kosher'), request.form.get('halal'),
                                 request.form.get('vegetarian'), request.form.get('vegan')]
-        kosher = False 
-        halal = False
-        vegetarian  = False
-        vegan = False
-        allergens = [request.form.get('dairy'), request.form.get('eggs'), request.form.get('fish'),
-                     request.form.get('shellfish'), request.form.get('tree_nuts'), request.form.get('peanuts'),
-                     request.form.get('wheat'), request.form.get('soybeans'), request.form.get('sesame')]
+        kosher = dietary_restrictions[0]
+        halal = dietary_restrictions[1]
+        vegetarian = dietary_restrictions[2]
+        vegan = dietary_restrictions[3]
+       # allergens = [request.form.get('dairy'), request.form.get('eggs'), request.form.get('fish'),
+                  #   request.form.get('shellfish'), request.form.get('tree_nuts'), request.form.get('peanuts'),
+                  #  request.form.get('wheat'), request.form.get('soybeans'), request.form.get('sesame')]
         
         tag_list = request.form.get('tags')
         tags = tag_list.split(',')
         for i in range(0, len(tags)):
             tags[i] = tags[i].strip()
 
-        for i in range(len(dietary_restrictions)):
-            if dietary_restrictions[i] == 'kosher':
-                kosher = True
-            elif dietary_restrictions[i] == 'vegetarian':
-                vegetarian = True
-            elif dietary_restrictions[i] == 'halal':
-                halal = True
-            elif dietary_restrictions[i] == 'vegan':
-                vegan = True
-
-        date = request.form.get('date')
+        date = datetime.date.today()
         requested = request.form.get('requested')
         expiration = request.form.get('expiration_date')
-        print(expiration)
 
         database.addItem(name,None,amount,category,donor,vegetarian,kosher,vegan,halal,expiration)
-        # TODO: Put into database
 
 
     return render_template("add.html")
