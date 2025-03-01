@@ -6,9 +6,10 @@
     {% if error %}
     <p color = "red">{{error}}</p>
     {% endif %}
-    <table>
+    <table width="100%" border="1px solid">
         <trhead>
             <tr>
+                <th></th>
                 <th>Item Name</th>
                 <th>Quantity</th>
                 <th>Category</th>
@@ -29,10 +30,9 @@
         {% endif %}
                 <td>{{row[0]}}</td> <!--Item Name-->
                 <td> <!--Quantity-->
-                    {{row[2]}}
                     <form method="POST" action="{{ url_for('dashboard') }}">
-                        <lable></lable><input type="text" name="new_quantity">
-                        <button type="submit">Update</button>
+                        <label>{{row[2]}}&nbsp;</label><input type="number" name="new_quantity">
+                        <button type="submit" width="50%">Update</button>
                     </form>
                 </td> 
                 <td>{{row[3]}}</td> <!--Category-->
