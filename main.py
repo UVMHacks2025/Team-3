@@ -51,10 +51,7 @@ INVENTORY DASHBOARD
 """
 @app.route("/dashboard", methods = ['GET','POST'])
 def dashboard():
-<<<<<<< HEAD
-=======
     error = 0
->>>>>>> 5d4f605a1e157bf77ee5afe698de127d01db5524
     if request.method == "POST":
         quantity = request.form.get("new_quantity") #data verification
         if quantity.isDigit():

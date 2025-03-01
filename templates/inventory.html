@@ -21,26 +21,26 @@
         <tbody>
         {% for row in rows %} <!--depends on how the database is setup-->
         <!-- Possibly add css to make row be red if low in stock and green if high in stock-->
-        {% if row[#Quantity] <= 5 %}
+        {% if row[2] <= 5 %}
             <th background-color="red">
-        {% elif row[#Quantity]  <= 10 %}
+        {% elif row[2]  <= 10 %}
             <th background-color="yellow">
         {% else %}
             <th background-color="green">
         {% endif %}
-                <td>{{row[]}}</td> <!--Item Name-->
-                <td>{{row[]}}</td> <!--Brand-->
+                <td>{{row[0]}}</td> <!--Item Name-->
+                <td>{{row[1]}}</td> <!--Brand-->
                 <td> <!--Quantity-->
-                    {{row[]}}
+                    {{row[2]}}
                     <form method="POST" action="{{ url_for('.inventory') }}">
                         <lable></lable><input type="text" name="new_quantity">
                         <button type="submit">Update</button>
                     </form>
                 </td> 
-                <td>{{row[]}}</td> <!--Category-->
-                <td>{{row[]}}</td> <!--Add Date-->
-                <td>{{row[]}}</td> <!--Exp Date-->
-                <td>{{row[]}}</td> <!--Donor-->
+                <td>{{row[3]}}</td> <!--Category-->
+                <td>{{row[4]}}</td> <!--Add Date-->
+                <td>{{row[5]}}</td> <!--Exp Date-->
+                <td>{{row[6]}}</td> <!--Donor-->
             </th>
         {% endfor %}
         </tbody>
