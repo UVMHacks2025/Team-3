@@ -3,34 +3,29 @@
 
 <form method="POST" action="{{ url_for('add') }}">
   <section class="add_form">
-
-    <label for="name" class="Name_Label">Name</label>
-    <br>
+    <div class="item_name">
+    <label for="name" class="Form_Label">Name</label>
     <input type="text" name="name" id="name" required />
+    </div>
 
-    <label for="amt">Amount</label>
-    <input type="number" name="amt" id="amt" required />
-
-
-    <label for="cat">Category</label>
-    <input type="text" name="cat" id="cat" required />
-
-    <label for="donor">Donor</label>
-    <input type="text" name="donor" id="donor" required />
-  
-
-
-    <h4>Dietary Restrictions</h4>
-    <label for="kosher">Kosher</label>
-    <input type="checkbox" id="kosher" name="dietary_restrictions" value="kosher" />
-    <label for="halal">Halal</label>
-    <input type="checkbox" id="halal" name="dietary_restrictions" value="halal" />
-    <label for="vegetarian">Vegetarian</label>
-    <input type="checkbox" id="vegetarian" name="dietary_restrictions" value="vegetarian" />
-    <label for="vegan">Vegan</label>
-    <input type="checkbox" id="vegan" name="dietary_restrictions" value="vegan" />
-
-    <h4>Allergens</h4>
+    <div class="CheckBoxArray item_diet">
+        <label class="Form_Label">Dietary Restrictions</label>
+        <br>
+        <label for="kosher">Kosher</label>
+        <input type="checkbox" id="kosher" name="dietary_restrictions" value="kosher" />
+        <br>
+        <label for="halal">Halal</label>
+        <input type="checkbox" id="halal" name="dietary_restrictions" value="halal" />
+        <br>
+        <label for="vegetarian">Vegetarian</label>
+        <input type="checkbox" id="vegetarian" name="dietary_restrictions" value="vegetarian" />
+        <br>
+        <label for="vegan">Vegan</label>
+        <input type="checkbox" id="vegan" name="dietary_restrictions" value="vegan" />
+    </div>
+    <!--
+    <div class="CheckBoxArray item_allergens">
+    <h4 class="Form_Label">Allergens</h4>
     <label for="dairy">Dairy</label>
     <input type="checkbox" id="dairy" name="allergens" value="dairy" />
     <label for="eggs">Eggs</label>
@@ -49,21 +44,32 @@
     <input type="checkbox" id="soybeans" name="allergens" value="soybeans" />
     <label for="sesame">Sesame</label>
     <input type="checkbox" id="sesame" name="allergens" value="sesame" />
+    </div>
+    -->
+    <div class="item_tags">
+    <label for="tags" class="Form_Label">Tags</label>
+        <br>
+        <textarea type="text" name="tags" id="tags">
 
-    <br>
-    <label for="tags">Tags</label>
-    <input type="text" name="tags" id="tags" />
-    <br>
-    <label for="donor">Donor</label>
+        </textarea>
+    </div>
+    <div class="item_donor">
+    <label for="donor" class="Form_Label">Donor</label>
     <input type="text" name="donor" id="donor" />
-    <br>
-    <label for="requested">Requested</label>
+    </div>
+
+    <div class="item_requested">
+    <label for="requested" class="Form_Label">Requested</label>
     <input type="checkbox" name="requested" id="requested">
-    <br>
-    <label for="expiration_date">Expiration Date</label>
+    </div>
+
+    <div class="item_expiration">
+    <label for="expiration_date" class="Form_Label">Expiration Date</label>
     <input type="date" name="expiration_date" id="expiration_date">
-    <br>
+    </div>
+    <div class="item_submit">
     <input type="submit" value="submit">
+    </div>
   </section>
 </form>
 
