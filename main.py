@@ -54,7 +54,7 @@ def dashboard():
     error = 0
     if request.method == "POST":
         quantity = request.form.get("new_quantity") #data verification
-        if quantity.isDigit():
+        if quantity.isdigit():
             #Update db with new quantity for inventory
             pass
         else:
