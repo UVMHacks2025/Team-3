@@ -2,7 +2,7 @@
 {% block content %}
 <div id="login_form">
     <p>To sign in, input your Username and Password below:</p>
-    <form method="POST" action=""> <!-- add in action from FLASK -->
+    <form method="POST" action="{{url_for('login')}}"> <!-- add in action from FLASK -->
         <label for="username">Username:</label><input
             class="form-control" type="text" id="username"
             name="username" required><br/>
@@ -12,4 +12,12 @@
         <button type="submit" name="submit_button">Login</button>
     </form>
 </div>
+
+
+<section>
+    Don't have an account? <a href="{{ url_for('register') }}">Register here</a>
+</section>
+<section>
+    <a href="{{ url_for('home') }}">Home</a>
+</section>
 {% endblock %}

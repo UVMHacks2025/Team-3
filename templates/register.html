@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+
+<section class="register">
+    <form method = "POST" action = "{{url_for('register')}}"
+    <section class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" value="{{ request.form.username or '' }}"required>
+
+        <label for="password">Password:</label>
+        <input type="text" name="password" id="password" value="{{ password or '' }}"required>
+    </section>    
+
+    <button type="submit">Registers</button>
+</form>
+
+</section>
+
+<section class="login-link">
+    Already have an account? <a href="{{ url_for('login') }}">Login here</a>
+</section>
+
+{%endblock%}
