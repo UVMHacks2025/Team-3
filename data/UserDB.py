@@ -10,17 +10,13 @@ print(data)
 
 
 
-# Read in example date
+# Read in example data
 #def setup(cls):
 
 class databse:
     # Read in example date
     def setup(cls):
-        database = sqlite3.connect()
-        cls = database.cursor()
-
-
-# Initialize sqlite
+        
 
     
 
@@ -28,7 +24,10 @@ class databse:
 
 # Add item
 
-
+    def addItem(cn, n, br, amt, cat, don, veget, kosh, vega, hall):
+        cn.execute("""INSERT INTO RALLYCATS (name, brand, quantity, category, 
+                   donor, vegetarian, kosher, vegan, hallal) VALUES ({n}, {br},
+                   {}""")
 
 # Remove item
 
