@@ -23,10 +23,9 @@ class Database:
     # Add item
 
     def addItem(self, n, br, amt, cat, don, veget, kosh, vega, hall):
-        self.cur.execute(f"""INSERT INTO RallyCats.Inventory (name, brand, quantity, category, 
-                   donor, vegetarian, kosher, vegan, hallal) VALUES ({"test"}, {"test"},
-                   {5}, {"test cat"}, {"test"}, {0}, {0}, {0}, {0})""")
-        self.cur.commit()
+        self.cur.execute("""INSERT INTO Inventory (name, brand, quantity, category, 
+                   donor, vegetarian, kosher, vegan, hallal) VALUES ("test", "test", 1, "test", "test", 0, 0, 0, 0)""")
+        self.cn.commit()
 
 # Remove item
     def removeItem(self, n):
@@ -53,14 +52,18 @@ def Testing():
     db = Database()
     db.load_db()
 
-    #db.cur.execute("SELECT * FROM Inventory")
-    #rows = db.cur.fetchall()
-    #for row in rows:
-    #    print(row)
+    db.cur.execute("SELECT * FROM Inventory")
+    rows = db.cur.fetchall()
+    for row in rows:
+        print(row)
     print("\n--- Running Tests ---")
 
     # Add a test item
     db.addItem("Test Item", "Test Brand", 10, "non-perishable", 1, 1, 1, 1, 1)
+    db.cur.execute("SELECT * FROM Inventory")
+    rows = db.cur.fetchall()
+    for row in rows:
+        print(row)
 """
     # Change quantity of test item
     db.changeQuantity("Test Item", 25)
