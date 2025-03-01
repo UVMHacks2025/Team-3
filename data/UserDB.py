@@ -31,7 +31,7 @@ class Database:
         try:
             target_date = exp
             current_date = datetime.now()
-            expiration = (target_date - current_date).days + 1
+            expiration = (str) (target_date - current_date).days + 1
             print(expiration)
         except ValueError:
             print('Expiration date conversion failed')
