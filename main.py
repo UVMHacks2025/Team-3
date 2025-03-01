@@ -19,15 +19,30 @@ LOGIN
 """
 @app.route("/login", methods = ['GET','POST'])
 def login():
+    if request.method == 'POST':
+        #posted to the server 
+        username = request.form.get('username')
+        print(username)
+        password = request.form.get('password')
+        print(password)
+
+
+        render_template("home.html", user = username)
+
+    return render_template("login.html", user = "")
+
+
+"""
+REGISTER
+"""
+@app.route("/register", methods = ['GET','POST'])
+def register():
     #if login from user
 
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
 
         #user db login info 
 
-    return render_template("register.html",username,password)
+    return render_template("register.html")
 
 
 
@@ -35,7 +50,7 @@ def login():
 INVENTORY DASHBOARD
 """
 @app.route("/dashboard", methods = ['GET','POST'])
-def home():
+def dashboard():
     if request.method == "POST":
         quantity = request.form.get("new_quantity") #data verification
         if quantity.isDigit():
@@ -58,3 +73,5 @@ ADD ITEM
 def add():
     return render_template("add.html")
 
+if __name__ == "__main__":
+    app.run(debug=True)
